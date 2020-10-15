@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase/services/auth.dart';
 
 class Home extends StatefulWidget {
   final FirebaseAuth auth;
@@ -19,13 +20,14 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Amateur Coder Todo"),
+        title: const Text("Todo firebase"),
         centerTitle: true,
         actions: [
           IconButton(
             key: const ValueKey("signOut"),
             icon: const Icon(Icons.exit_to_app),
             onPressed: () {
+              Auth(auth: widget.auth).signOut();
               showDialog(child: Text('hey'));
             },
           )
